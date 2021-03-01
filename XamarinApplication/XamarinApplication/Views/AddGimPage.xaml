@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="XamarinApplication.Views.AddGimPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+    xmlns:converters="clr-namespace:XamarinApplication.Validation;assembly=XamarinApplication"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:effects="clr-namespace:XamarinApplication.Tooltip"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:local="clr-namespace:XamarinApplication"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+    mc:Ignorable="d">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:UsernameCorrectConverter x:Key="CodeCorrectConverter" />
+            <converters:UsernameCorrectToHideLabelConverter x:Key="UsernameCorrectToHideLabelConverter" />
+            <converters:NotNullOrEmptyStringConverter x:Key="NotNullOrEmptyStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout
+        Margin="2,8,2,2"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <ScrollView Orientation="Vertical">
+            <Frame
+                x:Name="mainLayout"
+                Margin="1"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#FDFFFC"
+                HasShadow="true">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Tooltip_Tapped" />
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Label
+                        Margin="5,5,5,10"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{i18n:Translate NewGYM}"
+                        TextColor="Black" />
+                    <BoxView HeightRequest="1" Color="LightGray" />
+                    <!--<progressBar:SfStepProgressBar
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="FillAndExpand">
+                        <progressBar:StepView PrimaryText="Step 1">
+                            <inputLayout:SfTextInputLayout
+                                ContainerType="Outlined"
+                                Hint="Code*"
+                                OutlineCornerRadius="25"
+                                UnfocusedColor="Blue">
+                                <local:RoundedEntry
+                                    x:Name="CodeEntry"
+                                    effects:TooltipEffect.BackgroundColor="Silver"
+                                    effects:TooltipEffect.HasTooltip="True"
+                                    effects:TooltipEffect.Position="Right"
+                                    effects:TooltipEffect.Text="Code"
+                                    effects:TooltipEffect.TextColor="Teal"
+                                    Placeholder="{i18n:Translate Code}"
+                                    Text="{Binding Code, Mode=TwoWay}"
+                                    TextColor="Black" />
+                            </inputLayout:SfTextInputLayout>
+                            <Label
+                                FontSize="Small"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="False"
+                                Text="Code is Required"
+                                TextColor="OrangeRed">
+                                <Label.Triggers>
+                                    <MultiTrigger TargetType="Label">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding Source={x:Reference CodeEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="IsVisible" Value="{Binding Value}" />
+                                    </MultiTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <inputLayout:SfTextInputLayout
+                                ContainerType="Outlined"
+                                Hint="Name*"
+                                OutlineCornerRadius="25"
+                                UnfocusedColor="Blue">
+                                <local:RoundedEntry
+                                    x:Name="NameEntry"
+                                    effects:TooltipEffect.BackgroundColor="Silver"
+                                    effects:TooltipEffect.HasTooltip="True"
+                                    effects:TooltipEffect.Position="Right"
+                                    effects:TooltipEffect.Text="Name"
+                                    effects:TooltipEffect.TextColor="Teal"
+                                    Placeholder="{i18n:Translate Name}"
+                                    Text="{Binding Name, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    WidthRequest="500" />
+                            </inputLayout:SfTextInputLayout>
+                            <Label
+                                Grid.Row="3"
+                                FontSize="Small"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="False"
+                                Text="Name is Required"
+                                TextColor="OrangeRed"
+                                WidthRequest="210">
+                                <Label.Triggers>
+                                    <MultiTrigger TargetType="Label">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding Source={x:Reference NameEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="IsVisible" Value="{Binding Value}" />
+                                    </MultiTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <inputLayout:SfTextInputLayout
+                                Grid.Row="4"
+                                ContainerType="Outlined"
+                                Hint="Description*"
+                                OutlineCornerRadius="25"
+                                UnfocusedColor="Blue">
+                                <local:RoundedEntry
+                                    x:Name="DescriptionEntry"
+                                    effects:TooltipEffect.BackgroundColor="Silver"
+                                    effects:TooltipEffect.HasTooltip="True"
+                                    effects:TooltipEffect.Position="Right"
+                                    effects:TooltipEffect.Text="Description"
+                                    effects:TooltipEffect.TextColor="Teal"
+                                    Placeholder="{i18n:Translate Description}"
+                                    Text="{Binding Description, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    WidthRequest="500" />
+                            </inputLayout:SfTextInputLayout>
+                            <Label
+                                Grid.Row="5"
+                                FontSize="Small"
+                                HorizontalTextAlignment="Center"
+                                IsVisible="False"
+                                Text="Description is Required"
+                                TextColor="OrangeRed"
+                                WidthRequest="210">
+                                <Label.Triggers>
+                                    <MultiTrigger TargetType="Label">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding Source={x:Reference DescriptionEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="IsVisible" Value="{Binding Value}" />
+                                    </MultiTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </progressBar:StepView>
+                        <progressBar:StepView PrimaryText="Step 2">
+                            <inputLayout:SfTextInputLayout
+                                Grid.Row="6"
+                                ContainerType="Outlined"
+                                Hint="Address"
+                                OutlineCornerRadius="25"
+                                UnfocusedColor="Blue">
+                                <local:RoundedEntry
+                                    effects:TooltipEffect.BackgroundColor="Silver"
+                                    effects:TooltipEffect.HasTooltip="True"
+                                    effects:TooltipEffect.Position="Right"
+                                    effects:TooltipEffect.Text="Address"
+                                    effects:TooltipEffect.TextColor="Teal"
+                                    Placeholder="Address"
+                                    Text="{Binding Address, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    WidthRequest="500" />
+                            </inputLayout:SfTextInputLayout>
+                            <inputLayout:SfTextInputLayout
+                                Grid.Row="7"
+                                ContainerType="Outlined"
+                                Hint="Telephone"
+                                OutlineCornerRadius="25"
+                                UnfocusedColor="Blue">
+                                <local:RoundedEntry
+                                    effects:TooltipEffect.BackgroundColor="Silver"
+                                    effects:TooltipEffect.HasTooltip="True"
+                                    effects:TooltipEffect.Position="Right"
+                                    effects:TooltipEffect.Text="Telephone"
+                                    effects:TooltipEffect.TextColor="Teal"
+                                    Placeholder="Telephone"
+                                    Text="{Binding Telephone, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    WidthRequest="500" />
+                            </inputLayout:SfTextInputLayout>
+                            <inputLayout:SfTextInputLayout
+                                Grid.Row="8"
+                                ContainerType="Outlined"
+                                Hint="Email"
+                                OutlineCornerRadius="25"
+                                UnfocusedColor="Blue">
+                                <local:RoundedEntry
+                                    effects:TooltipEffect.BackgroundColor="Silver"
+                                    effects:TooltipEffect.HasTooltip="True"
+                                    effects:TooltipEffect.Position="Right"
+                                    effects:TooltipEffect.Text="Email"
+                                    effects:TooltipEffect.TextColor="Teal"
+                                    Placeholder="Email"
+                                    Text="{Binding Email, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    WidthRequest="500" />
+                            </inputLayout:SfTextInputLayout>
+                            <inputLayout:SfTextInputLayout
+                                Grid.Row="9"
+                                ContainerType="Outlined"
+                                Hint="WebSite"
+                                OutlineCornerRadius="25"
+                                UnfocusedColor="Blue">
+                                <local:RoundedEntry
+                                    effects:TooltipEffect.BackgroundColor="Silver"
+                                    effects:TooltipEffect.HasTooltip="True"
+                                    effects:TooltipEffect.Position="Right"
+                                    effects:TooltipEffect.Text="WebSite"
+                                    effects:TooltipEffect.TextColor="Teal"
+                                    Placeholder="WebSite"
+                                    Text="{Binding WebSite, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    WidthRequest="500" />
+                            </inputLayout:SfTextInputLayout>
+                            <inputLayout:SfTextInputLayout
+                                Grid.Row="10"
+                                ContainerType="Outlined"
+                                Hint="Reference Person"
+                                OutlineCornerRadius="25"
+                                UnfocusedColor="Blue">
+                                <local:RoundedEntry
+                                    effects:TooltipEffect.BackgroundColor="Silver"
+                                    effects:TooltipEffect.HasTooltip="True"
+                                    effects:TooltipEffect.Position="Right"
+                                    effects:TooltipEffect.Text="Reference Person"
+                                    effects:TooltipEffect.TextColor="Teal"
+                                    Placeholder="Reference Person"
+                                    Text="{Binding ReferencePerson, Mode=TwoWay}"
+                                    TextColor="Black"
+                                    WidthRequest="500" />
+                            </inputLayout:SfTextInputLayout>
+                        </progressBar:StepView>
+                        <progressBar:StepView PrimaryText="Step 3" />
+                        <progressBar:StepView PrimaryText="Step 4" Status="InProgress" />
+                        <progressBar:StepView PrimaryText="Step 5" />
+                    </progressBar:SfStepProgressBar>-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="280" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="0"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate CodeRequired}"
+                            OutlineCornerRadius="25"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                x:Name="CodeEntry"
+                                effects:TooltipEffect.BackgroundColor="Silver"
+                                effects:TooltipEffect.HasTooltip="True"
+                                effects:TooltipEffect.Position="Right"
+                                effects:TooltipEffect.Text="Code"
+                                effects:TooltipEffect.TextColor="Teal"
+                                Placeholder="{i18n:Translate Code}"
+                                Text="{Binding Code, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="1"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Code is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference CodeEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="2"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate NameRequired}"
+                            OutlineCornerRadius="25"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                x:Name="NameEntry"
+                                effects:TooltipEffect.BackgroundColor="Silver"
+                                effects:TooltipEffect.HasTooltip="True"
+                                effects:TooltipEffect.Position="Right"
+                                effects:TooltipEffect.Text="Name"
+                                effects:TooltipEffect.TextColor="Teal"
+                                Placeholder="{i18n:Translate Name}"
+                                Text="{Binding Name, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="3"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Name is Required"
+                            TextColor="OrangeRed"
+                            WidthRequest="210">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference NameEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="4"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate DescriptionRequired}"
+                            OutlineCornerRadius="25"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                x:Name="DescriptionEntry"
+                                effects:TooltipEffect.BackgroundColor="Silver"
+                                effects:TooltipEffect.HasTooltip="True"
+                                effects:TooltipEffect.Position="Right"
+                                effects:TooltipEffect.Text="Description"
+                                effects:TooltipEffect.TextColor="Teal"
+                                Placeholder="{i18n:Translate Description}"
+                                Text="{Binding Description, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="5"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Description is Required"
+                            TextColor="OrangeRed"
+                            WidthRequest="210">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference DescriptionEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="6"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate Address}"
+                            OutlineCornerRadius="25"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                effects:TooltipEffect.BackgroundColor="Silver"
+                                effects:TooltipEffect.HasTooltip="True"
+                                effects:TooltipEffect.Position="Right"
+                                effects:TooltipEffect.Text="Address"
+                                effects:TooltipEffect.TextColor="Teal"
+                                Placeholder="Address"
+                                Text="{Binding Address, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="7"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate Tel}"
+                            OutlineCornerRadius="25"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                effects:TooltipEffect.BackgroundColor="Silver"
+                                effects:TooltipEffect.HasTooltip="True"
+                                effects:TooltipEffect.Position="Right"
+                                effects:TooltipEffect.Text="Telephone"
+                                effects:TooltipEffect.TextColor="Teal"
+                                Placeholder="{i18n:Translate Tel}"
+                                Text="{Binding Telephone, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="8"
+                            ContainerType="Outlined"
+                            Hint="Email"
+                            OutlineCornerRadius="25"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                effects:TooltipEffect.BackgroundColor="Silver"
+                                effects:TooltipEffect.HasTooltip="True"
+                                effects:TooltipEffect.Position="Right"
+                                effects:TooltipEffect.Text="Email"
+                                effects:TooltipEffect.TextColor="Teal"
+                                Placeholder="Email"
+                                Text="{Binding Email, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="9"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate WebSite}"
+                            OutlineCornerRadius="25"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                effects:TooltipEffect.BackgroundColor="Silver"
+                                effects:TooltipEffect.HasTooltip="True"
+                                effects:TooltipEffect.Position="Right"
+                                effects:TooltipEffect.Text="WebSite"
+                                effects:TooltipEffect.TextColor="Teal"
+                                Placeholder="{i18n:Translate WebSite}"
+                                Text="{Binding WebSite, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="10"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate ReferencePerson}"
+                            OutlineCornerRadius="25"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                effects:TooltipEffect.BackgroundColor="Silver"
+                                effects:TooltipEffect.HasTooltip="True"
+                                effects:TooltipEffect.Position="Right"
+                                effects:TooltipEffect.Text="Reference Person"
+                                effects:TooltipEffect.TextColor="Teal"
+                                Placeholder="{i18n:Translate ReferencePerson}"
+                                Text="{Binding ReferencePerson, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="11"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate LicenceRequired}"
+                            OutlineCornerRadius="25"
+                            UnfocusedColor="Blue">
+                            <autocomplete:SfAutoComplete
+                                x:Name="LicenceEntry"
+                                BorderColor="Blue"
+                                DataSource="{Binding LicenceAutoComplete}"
+                                DisplayMemberPath="name"
+                                HeightRequest="50"
+                                HorizontalOptions="CenterAndExpand"
+                                NoResultsFoundFontAttributes="Bold"
+                                NoResultsFoundFontSize="16"
+                                NoResultsFoundText="No Results Found"
+                                NoResultsFoundTextColor="DarkGreen"
+                                SelectedItem="{Binding Licence}"
+                                SuggestionMode="StartsWith"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="210" />
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="12"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Licence is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference LicenceEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <StackLayout
+                            Grid.Row="13"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal">
+                            <Button
+                                BackgroundColor="#118AB2"
+                                Command="{Binding SaveGYM}"
+                                CornerRadius="25"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                Text="{i18n:Translate Save}"
+                                TextColor="#090C9B"
+                                WidthRequest="140">
+                                <Button.Triggers>
+                                    <MultiTrigger TargetType="Button">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding Source={x:Reference CodeEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                            <BindingCondition Binding="{Binding Source={x:Reference NameEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                            <BindingCondition Binding="{Binding Source={x:Reference DescriptionEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                            <BindingCondition Binding="{Binding Source={x:Reference LicenceEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="{Binding IsEnabled, Mode=TwoWay}" />
+                                    </MultiTrigger>
+                                </Button.Triggers>
+                            </Button>
+                            <Button
+                                BackgroundColor="#E0E2DB"
+                                Command="{Binding ClosePopup}"
+                                CornerRadius="25"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                Text="{i18n:Translate Close}"
+                                TextColor="#8B2635"
+                                WidthRequest="140" />
+                        </StackLayout>
+                        <!-- ACTIVITYINDICATOR: IS RUNNING WHEN CLICK ON LOGIN BUTTON
+                        <ActivityIndicator
+                            x:Name="ShowLoginIndicator"
+                            Grid.Row="15"
+                            HorizontalOptions="Center"
+                            IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                            IsVisible="False"
+                            VerticalOptions="Center"
+                            Color="#306BAC">
+                            <ActivityIndicator.Triggers>
+                                <MultiTrigger TargetType="ActivityIndicator">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference CodeEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        <BindingCondition Binding="{Binding Source={x:Reference NameEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        <BindingCondition Binding="{Binding Source={x:Reference DescriptionEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        <BindingCondition Binding="{Binding Source={x:Reference LicenceEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="True" />
+                                </MultiTrigger>
+                            </ActivityIndicator.Triggers>
+                        </ActivityIndicator>-->
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </StackLayout>
+</pages:PopupPage>

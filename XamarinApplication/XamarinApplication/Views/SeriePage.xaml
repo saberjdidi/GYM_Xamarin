@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinApplication.Views.SeriePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{i18n:Translate Series}"
+    mc:Ignorable="d">
+    <StackLayout>
+        <ListView
+            BackgroundColor="White"
+            HasUnevenRows="True"
+            ItemsSource="{Binding Series}"
+            SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame
+                            Margin="5"
+                            BackgroundColor="#C33C54"
+                            BorderColor="#C11333"
+                            CornerRadius="45"
+                            HasShadow="true">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="Serie"
+                                            TextColor="#FFFFFF"
+                                            WidthRequest="150" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{Binding serie}"
+                                            TextColor="#FFFFFF" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{i18n:Translate Initials}"
+                                            TextColor="#FFFFFF"
+                                            WidthRequest="150" />
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="{Binding initials}"
+                                            TextColor="#FFFFFF" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{i18n:Translate EffortIncrease}"
+                                            TextColor="#FFFFFF"
+                                            WidthRequest="150" />
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="{Binding effortIncrease}"
+                                            TextColor="#FFFFFF" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

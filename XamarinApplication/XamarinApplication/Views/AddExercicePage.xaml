@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="XamarinApplication.Views.AddExercicePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+    xmlns:converters="clr-namespace:XamarinApplication.Validation"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:local="clr-namespace:XamarinApplication"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    mc:Ignorable="d">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:UsernameCorrectConverter x:Key="CodeCorrectConverter" />
+            <converters:UsernameCorrectToHideLabelConverter x:Key="UsernameCorrectToHideLabelConverter" />
+            <converters:NotNullOrEmptyStringConverter x:Key="NotNullOrEmptyStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout
+        Margin="2,8,2,2"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <ScrollView Orientation="Vertical">
+            <Frame
+                Margin="1"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#FDFFFC"
+                HasShadow="true">
+                <StackLayout>
+                    <Label
+                        Margin="5,5,5,10"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{i18n:Translate NewExercice}"
+                        TextColor="Black" />
+                    <BoxView HeightRequest="1" Color="LightGray" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="0" Orientation="Horizontal">
+                            <input:SelectionView
+                                x:Name="LevelEntry"
+                                Grid.Row="12"
+                                BackgroundColor="Blue"
+                                ColumnNumber="1"
+                                ColumnSpacing="5"
+                                HorizontalOptions="FillAndExpand"
+                                ItemDisplayBinding="{Binding Value}"
+                                ItemsSource="{Binding ListLevel}"
+                                RowSpacing="5"
+                                SelectedItem="{Binding SelectedLevel}"
+                                SelectionType="RadioButton"
+                                VerticalOptions="FillAndExpand"
+                                Color="Blue" />
+                        </StackLayout>
+                        <Label
+                            Grid.Row="1"
+                            Margin="0,-10,0,0"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Level is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference LevelEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="2"
+                            Margin="0,-10,0,0"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate ExerciceTypology}"
+                            LeadingViewPosition="Inside"
+                            OutlineCornerRadius="25">
+                            <autocomplete:SfAutoComplete
+                                x:Name="TypologyEntry"
+                                DataSource="{Binding ExerciceTypologyAutoComplete}"
+                                DisplayMemberPath="detail"
+                                HeightRequest="50"
+                                HorizontalOptions="CenterAndExpand"
+                                NoResultsFoundFontAttributes="Bold"
+                                NoResultsFoundFontSize="16"
+                                NoResultsFoundText="{i18n:Translate NoResultFound}"
+                                NoResultsFoundTextColor="DarkGreen"
+                                SelectedItem="{Binding ExerciceTypology}"
+                                SuggestionMode="Contains"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="210">
+                                <autocomplete:SfAutoComplete.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label FontSize="16" Text="{Binding detail}" />
+                                            <Label FontSize="14" Text="{Binding description}" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </autocomplete:SfAutoComplete.ItemTemplate>
+                            </autocomplete:SfAutoComplete>
+
+                            <inputLayout:SfTextInputLayout.LeadingView>
+                                <Image Source="exercice.png" />
+                            </inputLayout:SfTextInputLayout.LeadingView>
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="3"
+                            Margin="0,-10,0,0"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Exercice Typology is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference TypologyEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="4"
+                            Margin="0,-10,0,0"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate NameRequired}"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                x:Name="NameEntry"
+                                Placeholder="{i18n:Translate Name}"
+                                Text="{Binding Name, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="5"
+                            Margin="0,-10,0,0"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Name is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference NameEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="6"
+                            Margin="0,-10,0,0"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate TotalSeries}"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                Keyboard="Numeric"
+                                Placeholder="{i18n:Translate TotalSeries}"
+                                Text="{Binding TotalSerie, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="7"
+                            Margin="0,-10,0,0"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate TotalReputation}"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                Keyboard="Numeric"
+                                Placeholder="{i18n:Translate TotalReputation}"
+                                Text="{Binding TotalReputation, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="8"
+                            Margin="0,-10,0,0"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate BreakDuration}"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                Keyboard="Numeric"
+                                Placeholder="{i18n:Translate BreakDuration}"
+                                Text="{Binding BreakDuration, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="9"
+                            Margin="0,-10,0,0"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate Speed}"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                Keyboard="Numeric"
+                                Placeholder="{i18n:Translate Speed}"
+                                Text="{Binding Speed, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <StackLayout
+                            Grid.Row="10"
+                            Margin="0,-10,0,0"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                Text="Concentric"
+                                TextColor="#474749" />
+                            <CheckBox IsChecked="{Binding Concentric, Mode=TwoWay}">
+                                <CheckBox.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenSearchBar}" />
+                                </CheckBox.GestureRecognizers>
+                            </CheckBox>
+
+                            <inputLayout:SfTextInputLayout
+                                ContainerType="Outlined"
+                                Hint="{i18n:Translate Beginning}"
+                                OutlineCornerRadius="25">
+                                <local:RoundedEntry
+                                    x:Name="LoodEntry"
+                                    IsVisible="{Binding ShowHide}"
+                                    Keyboard="Numeric"
+                                    Placeholder="{i18n:Translate Beginning}"
+                                    Text="{Binding InitialLood, Mode=TwoWay}"
+                                    TextColor="Black" />
+                            </inputLayout:SfTextInputLayout>
+                            <inputLayout:SfTextInputLayout
+                                ContainerType="Outlined"
+                                Hint="{i18n:Translate End}"
+                                OutlineCornerRadius="25">
+                                <local:RoundedEntry
+                                    IsVisible="{Binding ShowHide}"
+                                    Keyboard="Numeric"
+                                    Placeholder="{i18n:Translate End}"
+                                    Text="{Binding SecondLood, Mode=TwoWay}"
+                                    TextColor="Black" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+                        <Label
+                            Grid.Row="11"
+                            Margin="0,-10,0,0"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Lood is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference LoodEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <StackLayout
+                            Grid.Row="12"
+                            Margin="0,-10,0,0"
+                            Orientation="Horizontal">
+                            <Label
+                                FontAttributes="Bold"
+                                Text="Eccentric"
+                                TextColor="#474749" />
+                            <CheckBox IsChecked="{Binding Eccentric, Mode=TwoWay}" />
+                            <inputLayout:SfTextInputLayout
+                                ContainerType="Outlined"
+                                Hint="{i18n:Translate Beginning}"
+                                OutlineCornerRadius="25">
+                                <local:RoundedEntry
+                                    Keyboard="Numeric"
+                                    Placeholder="{i18n:Translate Beginning}"
+                                    Text="{Binding InitialLoodEccentric, Mode=TwoWay}"
+                                    TextColor="Black" />
+                            </inputLayout:SfTextInputLayout>
+                            <inputLayout:SfTextInputLayout
+                                ContainerType="Outlined"
+                                Hint="{i18n:Translate End}"
+                                OutlineCornerRadius="25">
+                                <local:RoundedEntry
+                                    Keyboard="Numeric"
+                                    Placeholder="{i18n:Translate End}"
+                                    Text="{Binding SecondLoodEccentric, Mode=TwoWay}"
+                                    TextColor="Black" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+                        <Button
+                            Grid.Row="13"
+                            BackgroundColor="#FF4081"
+                            Command="{Binding SaveExercice}"
+                            CornerRadius="25"
+                            HorizontalOptions="Center"
+                            Text="{i18n:Translate Save}"
+                            TextColor="#FFFFFF"
+                            WidthRequest="280">
+                            <Button.Triggers>
+                                <MultiTrigger TargetType="Button">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference LevelEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        <BindingCondition Binding="{Binding Source={x:Reference TypologyEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        <BindingCondition Binding="{Binding Source={x:Reference NameEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        <BindingCondition Binding="{Binding Source={x:Reference LoodEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="{Binding IsEnabled, Mode=TwoWay}" />
+                                </MultiTrigger>
+                            </Button.Triggers>
+                        </Button>
+                        <Button
+                            Grid.Row="14"
+                            BackgroundColor="#7A93AC"
+                            Command="{Binding ClosePopup}"
+                            CornerRadius="25"
+                            HorizontalOptions="Center"
+                            Text="{i18n:Translate Close}"
+                            TextColor="#FFFFFF"
+                            WidthRequest="280" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </StackLayout>
+</pages:PopupPage>

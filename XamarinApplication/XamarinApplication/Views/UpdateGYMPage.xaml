@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="XamarinApplication.Views.UpdateGYMPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+    xmlns:converters="clr-namespace:XamarinApplication.Validation"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:local="clr-namespace:XamarinApplication"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    mc:Ignorable="d">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:UsernameCorrectConverter x:Key="CodeCorrectConverter" />
+            <converters:UsernameCorrectToHideLabelConverter x:Key="UsernameCorrectToHideLabelConverter" />
+            <converters:NotNullOrEmptyStringConverter x:Key="NotNullOrEmptyStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout
+        Margin="2,8,2,2"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <ScrollView Orientation="Vertical">
+            <Frame
+                Margin="1"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#FDFFFC"
+                HasShadow="true">
+                <StackLayout>
+                    <Label
+                        Margin="5,5,5,10"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{i18n:Translate EditGYM}"
+                        TextColor="Black" />
+                    <BoxView HeightRequest="1" Color="LightGray" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="280" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="0"
+                            ContainerBackgroundColor="#E6EEF9"
+                            ContainerType="Outlined"
+                            FocusedColor="#0450C2"
+                            Hint="{i18n:Translate CodeRequired}"
+                            OutlineCornerRadius="8"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                x:Name="CodeEntry"
+                                Placeholder="{i18n:Translate Code}"
+                                Text="{Binding Gim.Code, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="1"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Code is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference CodeEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="2"
+                            ContainerBackgroundColor="#E6EEF9"
+                            ContainerType="Outlined"
+                            FocusedColor="#0450C2"
+                            Hint="{i18n:Translate NameRequired}"
+                            OutlineCornerRadius="8"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                x:Name="NameEntry"
+                                Grid.Row="2"
+                                Placeholder="{i18n:Translate Name}"
+                                Text="{Binding Gim.Name, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="3"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Name is Required"
+                            TextColor="OrangeRed"
+                            WidthRequest="210">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference NameEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="4"
+                            ContainerBackgroundColor="#E6EEF9"
+                            ContainerType="Outlined"
+                            FocusedColor="#0450C2"
+                            Hint="{i18n:Translate DescriptionRequired}"
+                            OutlineCornerRadius="8"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                x:Name="DescriptionEntry"
+                                Placeholder="{i18n:Translate Description}"
+                                Text="{Binding Gim.Description, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="5"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Description is Required"
+                            TextColor="OrangeRed"
+                            WidthRequest="210">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference DescriptionEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="6"
+                            ContainerBackgroundColor="#E6EEF9"
+                            ContainerType="Outlined"
+                            FocusedColor="#0450C2"
+                            Hint="{i18n:Translate Address}"
+                            OutlineCornerRadius="8"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                Placeholder="{i18n:Translate Address}"
+                                Text="{Binding Gim.Address, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="7"
+                            ContainerBackgroundColor="#E6EEF9"
+                            ContainerType="Outlined"
+                            FocusedColor="#0450C2"
+                            Hint="{i18n:Translate Tel}"
+                            OutlineCornerRadius="8"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                Placeholder="{i18n:Translate Tel}"
+                                Text="{Binding Gim.Tel, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="8"
+                            ContainerBackgroundColor="#E6EEF9"
+                            ContainerType="Outlined"
+                            FocusedColor="#0450C2"
+                            Hint="Email"
+                            OutlineCornerRadius="8"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                Placeholder="Email"
+                                Text="{Binding Gim.Email, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="9"
+                            ContainerBackgroundColor="#E6EEF9"
+                            ContainerType="Outlined"
+                            FocusedColor="#0450C2"
+                            Hint="{i18n:Translate WebSite}"
+                            OutlineCornerRadius="8"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                Placeholder="{i18n:Translate WebSite}"
+                                Text="{Binding Gim.WebSite, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="10"
+                            ContainerBackgroundColor="#E6EEF9"
+                            ContainerType="Outlined"
+                            FocusedColor="#0450C2"
+                            Hint="{i18n:Translate ReferencePerson}"
+                            OutlineCornerRadius="8"
+                            UnfocusedColor="Blue">
+                            <local:RoundedEntry
+                                Placeholder="{i18n:Translate ReferencePerson}"
+                                Text="{Binding Gim.ReferencePerson, Mode=TwoWay}"
+                                TextColor="Black"
+                                WidthRequest="500" />
+                        </inputLayout:SfTextInputLayout>
+                        <!-- <Label
+                            Grid.Row="11"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Licence}"
+                            TextColor="Blue" />
+                        <Frame
+                            Grid.Row="12"
+                            Margin="1"
+                            BorderColor="Blue"
+                            CornerRadius="10"
+                            HasShadow="true"
+                            HeightRequest="20"
+                            WidthRequest="265"></Frame>-->
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="11"
+                            ContainerBackgroundColor="#E6EEF9"
+                            ContainerType="Outlined"
+                            FocusedColor="#0450C2"
+                            Hint="{i18n:Translate LicenceRequired}"
+                            OutlineCornerRadius="8"
+                            UnfocusedColor="Blue">
+                            <autocomplete:SfAutoComplete
+                                x:Name="LicenceEntry"
+                                DataSource="{Binding LicenceAutoComplete}"
+                                DisplayMemberPath="name"
+                                HeightRequest="50"
+                                HorizontalOptions="CenterAndExpand"
+                                SelectedItem="{Binding Gim.licence}"
+                                SuggestionMode="StartsWith"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="210" />
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="12"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Licence is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference LicenceEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <StackLayout
+                            Grid.Row="13"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal">
+                            <Button
+                                BackgroundColor="#118AB2"
+                                Command="{Binding UpdateGYM}"
+                                CornerRadius="20"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                Text="{i18n:Translate Update}"
+                                TextColor="#090C9B"
+                                WidthRequest="120">
+                                <Button.Triggers>
+                                    <MultiTrigger TargetType="Button">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding Source={x:Reference CodeEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                            <BindingCondition Binding="{Binding Source={x:Reference NameEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                            <BindingCondition Binding="{Binding Source={x:Reference DescriptionEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                            <BindingCondition Binding="{Binding Source={x:Reference LicenceEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="{Binding IsEnabled, Mode=TwoWay}" />
+                                    </MultiTrigger>
+                                </Button.Triggers>
+                            </Button>
+                            <Button
+                                BackgroundColor="#E0E2DB"
+                                Command="{Binding ClosePopup}"
+                                CornerRadius="20"
+                                HeightRequest="40"
+                                HorizontalOptions="Center"
+                                Text="{i18n:Translate Close}"
+                                TextColor="#8B2635"
+                                WidthRequest="120" />
+                        </StackLayout>
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </StackLayout>
+</pages:PopupPage>

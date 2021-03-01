@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="XamarinApplication.Views.DashboardDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:local="clr-namespace:XamarinApplication.Converters"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{i18n:Translate Machine}"
+    BarBackgroundColor="#C90456"
+    mc:Ignorable="d">
+    <ContentPage
+        Title="{i18n:Translate Informations}"
+        HeightRequest="50"
+        Icon="information.png"
+        WidthRequest="50">
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <local:BackgroundColorConverter x:Key="BackgroundStatusConverter" />
+                <local:StringStatusConverter x:Key="StringStatusEnumConverter" />
+            </ResourceDictionary>
+        </ContentPage.Resources>
+        <ScrollView BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{Binding Machine.status, Converter={StaticResource StringStatusEnumConverter}}"
+                        TextColor="{Binding Machine.status, Converter={StaticResource BackgroundStatusConverter}}" />
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Code}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Machine.code}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate SerialNumber}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Machine.serialNumber}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="IP"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding Machine.ip}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Description}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding Machine.description}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Note}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Text="{Binding Machine.note}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate ActivationDate}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Text="{Binding Machine.activationDate}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate DeliveryDate}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Text="{Binding Machine.deliveryDate}"
+                            TextColor="Black" />
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="GYM" Icon="gym.png">
+        <ScrollView BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{Binding Machine.code}"
+                        TextColor="Black" />
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Code}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Machine.gim.Code}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Machine.gim.Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Description}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding Machine.gim.Description}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Address}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding Machine.gim.Address}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Email"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Text="{Binding Machine.gim.Email}"
+                            TextColor="Black" />
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="{i18n:Translate Licence}" Icon="licence.png">
+        <ScrollView BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{Binding Machine.gim.Code}"
+                        TextColor="Black" />
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Number}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Machine.gim.licence.number}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Machine.gim.licence.name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate StartDate}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding Machine.gim.licence.startDate}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate EndDate}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding Machine.gim.licence.endDate}"
+                            TextColor="Black" />
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

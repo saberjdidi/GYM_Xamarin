@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinApplication.Views.ConfigurationMachinePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:XamarinApplication"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ScrollView
+        Padding="1,5,1,5"
+        BackgroundColor="#FCFCFC"
+        Orientation="Both">
+        <Grid HorizontalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="70" />
+            </Grid.ColumnDefinitions>
+            <StackLayout
+                Grid.Column="0"
+                Margin="1,10,1,3"
+                HorizontalOptions="Start"
+                Orientation="Vertical">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="53" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Row="0"
+                        Margin="0,15,0,0"
+                        BackgroundColor="#E3F981"
+                        BorderColor="#FBB13C"
+                        BorderWidth="1"
+                        CornerRadius="10"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HeightRequest="53"
+                        Text="UP"
+                        TextColor="Blue" />
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="53" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Row="1"
+                        Margin="0,-30,0,10"
+                        BackgroundColor="#E3F981"
+                        BorderColor="#FBB13C"
+                        BorderWidth="1"
+                        CornerRadius="10"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HeightRequest="53"
+                        Text="DW"
+                        TextColor="Blue" />
+                </Grid>
+                <Button
+                    Grid.Row="2"
+                    Margin="0,25,0,0"
+                    BackgroundColor="#E3F981"
+                    BorderColor="#FBB13C"
+                    BorderWidth="1"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    HeightRequest="45"
+                    Text="Ad.Up"
+                    TextColor="Blue"
+                    WidthRequest="90" />
+                <Button
+                    Grid.Row="3"
+                    Margin="0,11,0,0"
+                    BackgroundColor="#E3F981"
+                    BorderColor="#FBB13C"
+                    BorderWidth="1"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    HeightRequest="45"
+                    Text="Ad.Dw"
+                    TextColor="Blue"
+                    WidthRequest="90" />
+                <Label
+                    Grid.Row="4"
+                    Margin="0,25,0,0"
+                    FontAttributes="Bold"
+                    Text="Serie"
+                    TextColor="#FBB13C" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="68" />
+                    </Grid.ColumnDefinitions>
+                    <local:RoundedEntry
+                        Grid.Row="5"
+                        Margin="0,-42.5,0,0"
+                        Keyboard="Telephone"
+                        Placeholder="25/25"
+                        Text=""
+                        TextColor="Blue" />
+                </Grid>
+            </StackLayout>
+            <StackLayout
+                Grid.Column="1"
+                Margin="1,10,3,2"
+                HorizontalOptions="Center"
+                Orientation="Vertical">
+                <Label
+                    Grid.Row="0"
+                    FontAttributes="Bold"
+                    Text="Forza[Kg]" FontSize="14"
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="1"
+                    BackgroundColor="#5EB1BF"
+                    HorizontalTextAlignment="Start"
+                    Keyboard="Numeric"
+                    Placeholder="200"
+                    Text=""
+                    TextColor="Black"
+                    WidthRequest="100" />
+                <Label
+                    Grid.Row="2"
+                    FontAttributes="Bold"
+                    Text="Rit.[Kg]" FontSize="14"
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="3"
+                    BackgroundColor="#5EB1BF"
+                    Keyboard="Numeric"
+                    Placeholder="200"
+                    Text=""
+                    TextColor="Black"
+                    WidthRequest="100" />
+                <Label
+                    Grid.Row="4"
+                    FontAttributes="Bold"
+                    Text="Velocita'" FontSize="14"
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="5"
+                    BackgroundColor="#5EB1BF"
+                    Keyboard="Numeric"
+                    Placeholder="500"
+                    Text=""
+                    TextColor="Black"
+                    WidthRequest="100" />
+                <Label
+                    Grid.Row="6"
+                    FontAttributes="Bold" FontSize="14"
+                    Text="Forza[Kg]"
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="7"
+                    BackgroundColor="#5EB1BF"
+                    Keyboard="Numeric"
+                    Placeholder="200"
+                    Text=""
+                    TextColor="Black"
+                    WidthRequest="100" />
+                <Label
+                    Grid.Row="8"
+                    Margin="0,10,0,0"
+                    FontAttributes="Bold"
+                    Text="Ripet."
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="9"
+                    Keyboard="Telephone"
+                    Placeholder="25/25"
+                    Text=""
+                    TextColor="Blue"
+                    WidthRequest="100" />
+            </StackLayout>
+            <StackLayout
+                Grid.Column="2"
+                Margin="1,20,1,2"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical">
+                <Button
+                    Grid.Row="1"
+                    BackgroundColor="#76B041"
+                    BorderColor="Green"
+                    BorderWidth="2"
+                    CornerRadius="60"
+                    FontAttributes="Bold"
+                    FontSize="21"
+                    HeightRequest="90"
+                    Text="Start"
+                    TextColor="White"
+                    WidthRequest="90" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
+                    <local:RoundedEntry
+                        Grid.Row="2"
+                        Margin="40,-25,-40,0"
+                        HeightRequest="40"
+                        HorizontalTextAlignment="Start"
+                        Keyboard="Numeric"
+                        Placeholder="0"
+                        Text=""
+                        TextColor="Red"
+                        WidthRequest="10" />
+                </Grid>
+                <Frame
+                    Grid.Row="3"
+                    Margin="0,-6,0,0"
+                    BackgroundColor="#28BAAE"
+                    BorderColor="#28BAAE"
+                    CornerRadius="2"
+                    HasShadow="true"
+                    HeightRequest="50"
+                    WidthRequest="50">
+                    <Image
+                        Margin="-20,-20,-20,-20"
+                        HeightRequest="50"
+                        Source="biceps"
+                        WidthRequest="50" />
+                </Frame>
+
+                <Label
+                    Grid.Row="4"
+                    Margin="0,60,0,0"
+                    FontAttributes="Bold"
+                    Text="Pausa[s]"
+                    TextColor="#FBB13C" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="66" />
+                    </Grid.ColumnDefinitions>
+                    <local:RoundedEntry
+                        Grid.Row="5"
+                        Margin="0,-43,0,0"
+                        Keyboard="Telephone"
+                        Placeholder="200"
+                        Text=""
+                        TextColor="Blue" />
+                </Grid>
+                <Label
+                    Grid.Row="10"
+                    Margin="-40,10,0,0"
+                    FontAttributes="Bold"
+                    FontSize="24"
+                    Text="Ready"
+                    TextColor="#FBB13C" />
+            </StackLayout>
+            <StackLayout
+                Grid.Column="3"
+                Margin="1,10,1,0"
+                HorizontalOptions="EndAndExpand"
+                Orientation="Vertical">
+                <Grid Margin="15,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="53" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Row="0"
+                        Margin="0,15,0,0"
+                        BackgroundColor="#E3F981"
+                        BorderColor="#FBB13C"
+                        BorderWidth="1"
+                        CornerRadius="10"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HeightRequest="53"
+                        Text="UP"
+                        TextColor="Blue" />
+                </Grid>
+                <Grid Margin="15,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="53" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Row="1"
+                        Margin="0,-30,0,10"
+                        BackgroundColor="#E3F981"
+                        BorderColor="#FBB13C"
+                        BorderWidth="1"
+                        CornerRadius="10"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HeightRequest="53"
+                        Text="DW"
+                        TextColor="Blue" />
+                </Grid>
+                <Button
+                    Grid.Row="2"
+                    Margin="0,15,0,0"
+                    BackgroundColor="#E3F981"
+                    BorderColor="#FBB13C"
+                    BorderWidth="1"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontSize="13"
+                    HeightRequest="45"
+                    Text="Single"
+                    TextColor="Blue"
+                    WidthRequest="100" />
+                <Button
+                    Grid.Row="3"
+                    Margin="0,10,0,0"
+                    BackgroundColor="Red"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    HeightRequest="45"
+                    Text="RST"
+                    TextColor="White"
+                    WidthRequest="100" />
+                <Label
+                    Grid.Row="8"
+                    Margin="-15,39,0,-462"
+                    FontAttributes="Bold"
+                    Text="T[min]"
+                    TextColor="#FBB13C" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="55" />
+                    </Grid.ColumnDefinitions>
+                    <local:RoundedEntry
+                        Grid.Row="9"
+                        Margin="-15,0,0,0"
+                        Placeholder="07:47"
+                        Text=""
+                        TextColor="Blue"
+                        WidthRequest="100" />
+                </Grid>
+                <Button
+                    Grid.Row="10"
+                    Margin="0,30,0,0"
+                    BackgroundColor="#73D2DE"
+                    Clicked="Next_Page"
+                    HeightRequest="40"
+                    ImageSource="next"
+                    WidthRequest="25" />
+            </StackLayout>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

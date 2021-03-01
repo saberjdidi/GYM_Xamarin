@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinApplication.Views.GimPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:XamarinApplication;assembly=XamarinApplication"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:XamarinApplication.ViewModels;assembly=XamarinApplication"
+    Title="        GYM"
+    mc:Ignorable="d">
+    <ContentPage.BindingContext>
+        <viewModels:GimViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding OpenSearchBar}"
+            IconImageSource="ic_search_white_24dp"
+            Text="{Binding ShowHide}" />
+        <ToolbarItem Clicked="Add_Gim" IconImageSource="add" />
+    </ContentPage.ToolbarItems>
+    <StackLayout Padding="5">
+        <custom:RoundedCornerView BorderWidth="1" RoundedCornerRadius="25">
+            <SearchBar
+                BackgroundColor="PapayaWhip"
+                HeightRequest="46"
+                IsVisible="{Binding ShowHide}"
+                Placeholder="{i18n:Translate SearchGYM}"
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding Filter, Mode=TwoWay}" />
+        </custom:RoundedCornerView>
+        <Label
+            x:Name="status"
+            FontSize="24"
+            HorizontalOptions="FillAndExpand"
+            HorizontalTextAlignment="Center"
+            IsVisible="{Binding IsVisibleStatus}"
+            Text="No Result !"
+            TextColor="Black"
+            VerticalOptions="FillAndExpand"
+            VerticalTextAlignment="Center" />
+        <ListView
+            HasUnevenRows="true"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+            ItemsSource="{Binding Gims}"
+            RefreshCommand="{Binding RefreshCommand}"
+            SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                Clicked="Update_GYM"
+                                CommandParameter="{Binding .}"
+                                IconImageSource="edit.png"
+                                Text="Edit" />
+                            <MenuItem
+                                Command="{Binding DeleteCommand}"
+                                IconImageSource="trash.png"
+                                IsDestructive="true"
+                                Text="Delete" />
+                            <MenuItem
+                                Clicked="GYM_Detail"
+                                CommandParameter="{Binding .}"
+                                IconImageSource="show.png"
+                                Text="Show" />
+                        </ViewCell.ContextActions>
+                        <custom:RoundedCornerView
+                            Margin="3"
+                            BorderColor="#C33C54"
+                            BorderWidth="1"
+                            RoundedCornerRadius="45">
+                            <Grid BackgroundColor="#C33C54">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <!-- <StackLayout
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    VerticalOptions="Center">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{i18n:Translate Code}"
+                                            TextColor="#FFFFFF"
+                                            WidthRequest="100" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{Binding Code}"
+                                            TextColor="#FFFFFF" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{i18n:Translate Name}"
+                                            TextColor="#FFFFFF"
+                                            WidthRequest="100" />
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="{Binding Name}"
+                                            TextColor="#FFFFFF" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="{i18n:Translate Description}"
+                                            TextColor="#FFFFFF"
+                                            WidthRequest="120" />
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="{Binding Description}"
+                                            TextColor="#FFFFFF" />
+                                    </StackLayout>
+                                </StackLayout>-->
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    Padding="20,0,0,0"
+                                    Orientation="Vertical"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="Arial, Helvetica, sans-serif"
+                                        FontSize="18"
+                                        Text="{Binding Code}"
+                                        TextColor="#FFFFFF" />
+                                    <Label
+                                        FontAttributes="Italic"
+                                        FontSize="16"
+                                        Text="{Binding Name}"
+                                        TextColor="#CFFBFC" />
+                                    <Label
+                                        FontFamily="Times New Roman"
+                                        FontSize="14"
+                                        Text="{Binding Description}"
+                                        TextColor="#BCF4F5" />
+                                </StackLayout>
+                            </Grid>
+                        </custom:RoundedCornerView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--<AbsoluteLayout>
+            <Frame
+                Margin="6"
+                AbsoluteLayout.LayoutBounds="1,1,-1,-1"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                BackgroundColor="Blue"
+                CornerRadius="50"
+                HasShadow="True">
+                <Image Source="add.png" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Add_Gim" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </AbsoluteLayout>-->
+    </StackLayout>
+</ContentPage>

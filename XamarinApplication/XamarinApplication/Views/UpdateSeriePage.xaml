@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="XamarinApplication.Views.UpdateSeriePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:converters="clr-namespace:XamarinApplication.Validation"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:local="clr-namespace:XamarinApplication"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    mc:Ignorable="d">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:UsernameCorrectConverter x:Key="CodeCorrectConverter" />
+            <converters:UsernameCorrectToHideLabelConverter x:Key="UsernameCorrectToHideLabelConverter" />
+            <converters:NotNullOrEmptyStringConverter x:Key="NotNullOrEmptyStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout
+        Margin="2,8,2,2"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <ScrollView Orientation="Vertical">
+            <Frame
+                Margin="1"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#FDFFFC"
+                HasShadow="true">
+                <StackLayout>
+                    <Label
+                        Margin="5,5,5,10"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="Edit Serie"
+                        TextColor="Black" />
+                    <BoxView HeightRequest="1" Color="LightGray" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <inputLayout:SfTextInputLayout
+                            ContainerType="Outlined"
+                            Hint="N.Serie*"
+                            LeadingViewPosition="Inside"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                x:Name="SerieEntry"
+                                Grid.Row="0"
+                                Keyboard="Numeric"
+                                Placeholder="N.Serie"
+                                Text="{Binding Serie.serie, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="1"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Serie is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference SerieEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="2"
+                            ContainerType="Outlined"
+                            Hint="Initials(KG)"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                Keyboard="Numeric"
+                                Placeholder="Initials(KG)"
+                                Text="{Binding Serie.initials, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="3"
+                            ContainerType="Outlined"
+                            Hint="Effort Increase(KG)"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                Keyboard="Numeric"
+                                Placeholder="Effort Increase"
+                                Text="{Binding Serie.effortIncrease, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="4"
+                            ContainerType="Outlined"
+                            Hint="Seconds Increase Effort(second)"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                Keyboard="Numeric"
+                                Placeholder="Seconde Increase Effort"
+                                Text="{Binding Serie.secondsIncreaseEffort, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="5"
+                            ContainerType="Outlined"
+                            Hint="Limit(KG)"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                Keyboard="Numeric"
+                                Placeholder="Limit"
+                                Text="{Binding Serie.limits, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="6"
+                            ContainerType="Outlined"
+                            Hint="Staticity Time(minute second)"
+                            OutlineCornerRadius="25">
+                            <local:RoundedEntry
+                                Keyboard="Numeric"
+                                Placeholder="Staticity Time"
+                                Text="{Binding Serie.timeStaticity, Mode=TwoWay}"
+                                TextColor="Black" />
+                        </inputLayout:SfTextInputLayout>
+                        <StackLayout
+                            Grid.Row="7"
+                            Margin="0,10,0,0"
+                            HorizontalOptions="CenterAndExpand"
+                            Orientation="Horizontal">
+                            <Button
+                                BackgroundColor="#118AB2"
+                                Command="{Binding UpdateSerie}"
+                                CornerRadius="25"
+                                HeightRequest="45"
+                                HorizontalOptions="Center"
+                                Text="Update"
+                                TextColor="#090C9B"
+                                WidthRequest="120">
+                                <Button.Triggers>
+                                    <MultiTrigger TargetType="Button">
+                                        <MultiTrigger.Conditions>
+                                            <BindingCondition Binding="{Binding Source={x:Reference SerieEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="{Binding IsEnabled, Mode=TwoWay}" />
+                                    </MultiTrigger>
+                                </Button.Triggers>
+                            </Button>
+                            <Button
+                                BackgroundColor="#E0E2DB"
+                                Command="{Binding ClosePopup}"
+                                CornerRadius="25"
+                                HeightRequest="45"
+                                HorizontalOptions="Center"
+                                Text="Close"
+                                TextColor="#8B2635"
+                                WidthRequest="120" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </StackLayout>
+</pages:PopupPage>

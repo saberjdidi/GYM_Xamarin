@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="XamarinApplication.Views.GimDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="GYM"
+    BarBackgroundColor="#C90456"
+    mc:Ignorable="d">
+    <ContentPage
+        x:Name="InformationsTitle"
+        HeightRequest="50"
+        Icon="information.png"
+        WidthRequest="50">
+        <ScrollView BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Code}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Gim.Code}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Gim.Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Description}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding Gim.Description}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Address}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding Gim.Address}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Tel}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Text="{Binding Gim.Tel}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Email"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Text="{Binding Gim.Email}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate WebSite}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Text="{Binding Gim.WebSite}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate ReferencePerson}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="7"
+                            Grid.Column="1"
+                            Text="{Binding Gim.ReferencePerson}"
+                            TextColor="Black" />
+                        <!--
+                    <Label
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Delivery Date"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        Text="{Binding Gim.DeliveryDate}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="9"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Activation Date"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="9"
+                        Grid.Column="1"
+                        Text="{Binding Gim.ActivationDate}"
+                        TextColor="Black" />-->
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage
+        x:Name="LicenceTitle"
+        HeightRequest="50"
+        Icon="licence.png"
+        WidthRequest="50">
+        <ScrollView>
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{Binding Gim.Code}"
+                        TextColor="Black" />
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Number}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Gim.licence.number}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Gim.licence.name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate StartDate}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding Gim.licence.startDate}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate EndDate}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding Gim.licence.endDate}"
+                            TextColor="Black" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

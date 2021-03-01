@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinApplication.Views.RegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:XamarinApplication.ViewModels;assembly=XamarinApplication"
+    mc:Ignorable="d">
+    <ContentPage.BindingContext>
+        <viewModels:RegisterViewModel />
+    </ContentPage.BindingContext>
+    <!--<StackLayout Orientation="Vertical">
+        <Entry Placeholder="username" Text="{Binding Username}" />
+        <Entry
+            IsPassword="True"
+            Placeholder="password"
+            Text="{Binding Password}" />
+        <Entry
+            IsPassword="True"
+            Placeholder="confirmPassword"
+            Text="{Binding ConfirmPassword}" />
+        <Button Command="{Binding RegisterCommand}" Text="Register" />
+        <Button Clicked="Button_Clicked" Text="Login" />
+        <Label Text="{Binding Message}" />
+    </StackLayout>-->
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0">
+                        <Entry
+                            FontSize="16"
+                            Placeholder="Email"
+                            Text="{Binding Username}" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Entry
+                            FontSize="16"
+                            IsPassword="True"
+                            Placeholder="Password"
+                            Text="{Binding Password}" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="2">
+                        <Entry
+                            FontSize="16"
+                            Placeholder="Confirm Password"
+                            Text="{Binding ConfirmPassword}" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="4">
+                        <Button
+                            BackgroundColor="Blue"
+                            Command="{Binding RegisterCommand}"
+                            CornerRadius="20"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Register"
+                            TextColor="White"
+                            WidthRequest="100" />
+                        <Button
+                            BackgroundColor="Gold"
+                            Clicked="Button_Clicked"
+                            CornerRadius="20"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Login"
+                            TextColor="White"
+                            WidthRequest="100" />
+                        <Label Text="{Binding Message}" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

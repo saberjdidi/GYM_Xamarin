@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<bnb:BottomBarPage
+    x:Class="XamarinApplication.Views.ClientDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bnb="clr-namespace:BottomBar.XamarinForms;assembly=BottomBar.XamarinForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Client"
+    BarBackgroundColor="#C90456"
+    mc:Ignorable="d">
+    <ContentPage
+        Title="{i18n:Translate Informations}"
+        bnb:BottomBarPageExtensions.TabColor="Blue"
+        Icon="information.png">
+        <ScrollView BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Username"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding User.username}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Firstname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding User.firstname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Lastname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding User.lastname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Email"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding User.email}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Tel}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Text="{Binding User.phone}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Note}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Text="{Binding User.note}"
+                            TextColor="Black" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage
+        Title="GYM"
+        bnb:BottomBarPageExtensions.TabColor="#315C2B"
+        Icon="gym.png">
+        <ScrollView BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Code}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding User.gim.Code}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding User.gim.Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Description}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding User.gim.Description}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Address}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding User.gim.Address}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Tel}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Text="{Binding User.gim.Tel}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Licence}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Text="{Binding User.gim.licence.name}"
+                            TextColor="Black" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage
+        Title="{i18n:Translate Coach}"
+        bnb:BottomBarPageExtensions.TabColor="Crimson"
+        Icon="fitnessgym.png">
+        <ScrollView BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Firstname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding User.coach.firstname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Lastname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding User.coach.lastname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Email"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding User.coach.email}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Tel}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding User.coach.phone}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="GYM"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Text="{Binding User.coach.gim.Name}"
+                            TextColor="Black" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+</bnb:BottomBarPage>

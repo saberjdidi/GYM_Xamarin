@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="XamarinApplication.Views.PlanningDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{i18n:Translate Planning}"
+    BarBackgroundColor="#C90456"
+    BarTextColor="White"
+    mc:Ignorable="d">
+    <!--
+        //add if you have TabbedPage in Bottom
+        xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+        android:TabbedPage.BarItemColor="#66FFFFFF"
+        android:TabbedPage.BarSelectedItemColor="White"
+        android:TabbedPage.ToolbarPlacement="Bottom"
+
+    <ContentPage
+        x:Name="InformationsTitle"
+        HeightRequest="50"
+        Icon="information.png"
+        WidthRequest="50">
+        <ScrollView>
+            <Frame
+                Margin="10,5,10,20"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout Padding="5">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="{i18n:Translate Date}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            Text="{Binding Planning.date}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="{i18n:Translate Program}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            Text="{Binding Planning.program.name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Text="{i18n:Translate Machine}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            Text="{Binding Planning.program.machine.code}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="Gim"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            Text="{Binding Planning.sportif.gim.Code}"
+                            TextColor="Black" />
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>-->
+    <ContentPage x:Name="ProgramsTitle" Icon="program.png">
+        <StackLayout BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout Padding="5">
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="{i18n:Translate Planning}"
+                            TextColor="Black" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="{Binding Planning.id}"
+                            TextColor="Black" />
+                    </StackLayout>
+                    <Label
+                        FontSize="24"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="{Binding IsVisibleStatus}"
+                        Text="No Result !"
+                        TextColor="Black"
+                        VerticalOptions="FillAndExpand"
+                        VerticalTextAlignment="Center" />
+                    <ListView
+                        HasUnevenRows="true"
+                        ItemTapped="Program_Exercices"
+                        ItemsSource="{Binding Planning.programs}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame
+                                        Margin="5"
+                                        BackgroundColor="#F43D5B"
+                                        HasShadow="true">
+                                        <Grid Padding="5">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    FontFamily="Arial, Helvetica, sans-serif"
+                                                    FontSize="18"
+                                                    Text="{Binding name}"
+                                                    TextColor="#FFFFFF" />
+                                                <Label
+                                                    FontFamily="Times New Roman"
+                                                    FontSize="14"
+                                                    Text="{Binding coach.username}"
+                                                    TextColor="#BCF4F5" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage x:Name="SportifTitle" Icon="fitnessgym.png">
+        <ScrollView BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout Padding="5">
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="{i18n:Translate Planning}"
+                            TextColor="Black" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="{Binding Planning.id}"
+                            TextColor="Black" />
+                    </StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Username}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Planning.sportif.username}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Lastname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Planning.sportif.lastname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Email"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding Planning.sportif.email}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Gim"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding Planning.sportif.gim.Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Coach"
+                            TextColor="Black" />
+                        <StackLayout
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+                            <Label Text="{Binding Planning.sportif.coach.username}" TextColor="Black" />
+                            <Label Text="{Binding Planning.sportif.coach.lastname}" TextColor="Black" />
+                        </StackLayout>
+
+                        <!--
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Licence"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{Binding Planning.sportif.gim.licence.name}"
+                        TextColor="Black" />-->
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+    <!-- <ContentPage x:Name="ExercicesTitle" Icon="exercice.png">
+        <ScrollView>
+            <StackLayout Padding="5">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding Planning.program.name}"
+                    TextColor="Black" />
+
+                <ListView HasUnevenRows="true" ItemsSource="{Binding Planning.program.exercises}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    Margin="5"
+                                    BackgroundColor="#F43D5B"
+                                    HasShadow="true">
+                                    <Grid Padding="5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    Text="{i18n:Translate Exercice}"
+                                                    TextColor="#FFFFFF"
+                                                    WidthRequest="120" />
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    Text="{Binding id}"
+                                                    TextColor="#FFFFFF" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    Text="{i18n:Translate Name}"
+                                                    TextColor="#FFFFFF"
+                                                    WidthRequest="100" />
+                                                <Label Text="{Binding name}" TextColor="#FFFFFF" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    Text="{i18n:Translate TotalSeries}"
+                                                    TextColor="#FFFFFF"
+                                                    WidthRequest="120" />
+                                                <Label Text="{Binding totalSeries}" TextColor="#FFFFFF" />
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label
+                                                    FontAttributes="Bold"
+                                                    Text="{i18n:Translate TotalReputation}"
+                                                    TextColor="#FFFFFF"
+                                                    WidthRequest="120" />
+                                                <Label Text="{Binding totalReputation}" TextColor="#FFFFFF" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>-->
+</TabbedPage>

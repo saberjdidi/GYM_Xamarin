@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="XamarinApplication.Views.ExerciceDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:local="clr-namespace:XamarinApplication.Converters"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{i18n:Translate Exercice}"
+    BarBackgroundColor="#C90456"
+    mc:Ignorable="d">
+    <ContentPage
+        x:Name="InformationsTitle"
+        HeightRequest="50"
+        Icon="information.png"
+        WidthRequest="50">
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <local:LevelExerciceConverter x:Key="LevelExerciceConverter" />
+            </ResourceDictionary>
+        </ContentPage.Resources>
+        <ScrollView BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{Binding Exercice.level, Converter={StaticResource LevelExerciceConverter}}"
+                        TextColor="Black" />
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate TotalSeries}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.totalSeries}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate TotalReputation}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.totalReputation}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Lood"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.lood}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate BreakDuration}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.breakDuration}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Speed}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.speed}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Typology"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.exerciseTypologie.detail}"
+                            TextColor="Black" />
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage
+        x:Name="CoachTitle"
+        HeightRequest="50"
+        Icon="fitnessgym.png"
+        WidthRequest="50">
+        <ScrollView BackgroundColor="Transparent">
+            <Frame
+                Margin="10,5,10,30"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#D3D4D9"
+                HasShadow="true">
+                <StackLayout>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Firstname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.coach.firstname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Lastname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.coach.lastname}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="Email"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.coach.email}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="GYM"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.coach.gim.Name}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Licence}"
+                            TextColor="Black" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Text="{Binding Exercice.coach.gim.licence.name}"
+                            TextColor="Black" />
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

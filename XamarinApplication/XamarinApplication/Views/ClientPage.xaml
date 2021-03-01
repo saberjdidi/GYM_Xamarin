@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinApplication.Views.ClientPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:XamarinApplication"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Clients"
+    mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding OpenSearchBar}"
+            IconImageSource="ic_search_white_24dp"
+            Text="{Binding ShowHide}" />
+        <ToolbarItem Clicked="Add_Client" IconImageSource="add" />
+    </ContentPage.ToolbarItems>
+    <StackLayout Padding="5">
+        <custom:RoundedCornerView BorderWidth="1" RoundedCornerRadius="25">
+            <SearchBar
+                BackgroundColor="PapayaWhip"
+                HeightRequest="46"
+                IsVisible="{Binding ShowHide}"
+                Placeholder="Username"
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding Filter, Mode=TwoWay}" />
+        </custom:RoundedCornerView>
+        <Label
+            x:Name="status"
+            FontSize="24"
+            HorizontalOptions="FillAndExpand"
+            HorizontalTextAlignment="Center"
+            IsVisible="{Binding IsVisibleStatus}"
+            Text="No Result !"
+            TextColor="Black"
+            VerticalOptions="FillAndExpand"
+            VerticalTextAlignment="Center" />
+        <ListView
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+            ItemsSource="{Binding Clients}"
+            RefreshCommand="{Binding RefreshCommand}"
+            SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                Clicked="Download_pdf"
+                                CommandParameter="{Binding .}"
+                                IconImageSource="pdf.png"
+                                Text="pdf" />
+                            <MenuItem
+                                Clicked="Update_Client"
+                                CommandParameter="{Binding .}"
+                                IconImageSource="edit.png"
+                                Text="Edit" />
+                            <MenuItem
+                                Command="{Binding DeleteCommand}"
+                                IconImageSource="trash.png"
+                                IsDestructive="true"
+                                Text="Delete" />
+                            <MenuItem
+                                Clicked="Client_Detail"
+                                CommandParameter="{Binding .}"
+                                IconImageSource="show.png"
+                                Text="Show" />
+                            <MenuItem
+                                Clicked="Parametres_Client"
+                                CommandParameter="{Binding .}"
+                                Text="Parametres" />
+                            <MenuItem
+                                Clicked="Lessons_Client"
+                                CommandParameter="{Binding .}"
+                                Text="Lessons" />
+                            <MenuItem
+                                Clicked="Bia_Client"
+                                CommandParameter="{Binding .}"
+                                Text="Bia" />
+                        </ViewCell.ContextActions>
+                        <custom:RoundedCornerView
+                            Margin="3"
+                            BorderColor="#C33C54"
+                            BorderWidth="1"
+                            RoundedCornerRadius="45">
+                            <Grid BackgroundColor="#C33C54">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    Padding="20,0,0,0"
+                                    Orientation="Vertical"
+                                    VerticalOptions="Center">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontFamily="Arial, Helvetica, sans-serif"
+                                            FontSize="18"
+                                            Text="{Binding username}"
+                                            TextColor="#FFFFFF" />
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontFamily="Arial, Helvetica, sans-serif"
+                                            FontSize="18"
+                                            Text="{Binding lastname}"
+                                            TextColor="#FFFFFF" />
+                                    </StackLayout>
+                                    <Label
+                                        FontAttributes="Italic"
+                                        FontSize="16"
+                                        Text="{Binding email}"
+                                        TextColor="#CFFBFC" />
+                                    <Label
+                                        FontFamily="Times New Roman"
+                                        FontSize="14"
+                                        Text="{Binding gim.Name}"
+                                        TextColor="#BCF4F5" />
+                                </StackLayout>
+                            </Grid>
+                        </custom:RoundedCornerView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+    </StackLayout>
+</ContentPage>

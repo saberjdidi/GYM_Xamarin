@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinApplication.Views.SplashScreenPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="#F2F2F2"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout
+            x:Name="stackLayout"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Image
+                HeightRequest="160"
+                Source="logo.png"
+                WidthRequest="270" />
+            <Label
+                FontAttributes="Bold"
+                FontFamily="Times New Roman"
+                FontSize="28"
+                HorizontalOptions="CenterAndExpand"
+                Text="GYM TECH"
+                TextColor="#550C18"
+                VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

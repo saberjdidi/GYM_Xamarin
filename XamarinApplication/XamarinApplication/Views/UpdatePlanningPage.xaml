@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="XamarinApplication.Views.UpdatePlanningPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:autocomplete="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+    xmlns:converters="clr-namespace:XamarinApplication.Validation"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    mc:Ignorable="d">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:UsernameCorrectConverter x:Key="CodeCorrectConverter" />
+            <converters:UsernameCorrectToHideLabelConverter x:Key="UsernameCorrectToHideLabelConverter" />
+            <converters:NotNullOrEmptyStringConverter x:Key="NotNullOrEmptyStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout
+        Margin="2,8,2,2"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <ScrollView Orientation="Vertical">
+            <Frame
+                Margin="1"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#FDFFFC"
+                HasShadow="true">
+                <StackLayout>
+                    <Label
+                        Margin="5,5,5,10"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{i18n:Translate EditPlanning}"
+                        TextColor="Black" />
+                    <BoxView HeightRequest="1" Color="LightGray" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="280" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="0"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate Date}"
+                            LeadingViewPosition="Inside"
+                            OutlineCornerRadius="25">
+                            <DatePicker
+                                x:Name="DateEntry"
+                                Date="{Binding Planning.date}"
+                                Format="yyyy-MM-dd"
+                                WidthRequest="280" />
+                            <inputLayout:SfTextInputLayout.LeadingView>
+                                <Image Source="calendar_color.png" />
+                            </inputLayout:SfTextInputLayout.LeadingView>
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="1"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Date is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference DateEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="2"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate AthleticRequired}"
+                            LeadingViewPosition="Inside"
+                            OutlineCornerRadius="25">
+                            <autocomplete:SfAutoComplete
+                                x:Name="AthleticEntry"
+                                DataSource="{Binding UserAutoComplete}"
+                                DisplayMemberPath="username"
+                                HeightRequest="50"
+                                HorizontalOptions="CenterAndExpand"
+                                NoResultsFoundFontAttributes="Bold"
+                                NoResultsFoundFontSize="16"
+                                NoResultsFoundText="No Results Found"
+                                NoResultsFoundTextColor="DarkGreen"
+                                SelectedItem="{Binding Planning.sportif}"
+                                SuggestionMode="Contains"
+                                TextColor="Black"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="210">
+                                <autocomplete:SfAutoComplete.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label FontSize="16" Text="{Binding username}" />
+                                            <Label FontSize="14" Text="{Binding lastname}" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </autocomplete:SfAutoComplete.ItemTemplate>
+                            </autocomplete:SfAutoComplete>
+                            <inputLayout:SfTextInputLayout.LeadingView>
+                                <Image Source="person.png" />
+                            </inputLayout:SfTextInputLayout.LeadingView>
+                        </inputLayout:SfTextInputLayout>
+                        <Label
+                            Grid.Row="3"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Athletic is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference AthleticEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="4"
+                            ContainerType="Outlined"
+                            Hint="{i18n:Translate ProgramsRequired}"
+                            LeadingViewPosition="Inside"
+                            OutlineCornerRadius="25">
+                            <autocomplete:SfAutoComplete
+                                x:Name="ProgramEntry"
+                                BorderColor="Blue"
+                                DataSource="{Binding ProgramAutoComplete}"
+                                DisplayMemberPath="name"
+                                HeightRequest="50"
+                                ImageMemberPath="Image"
+                                IsSelectedItemsVisibleInDropDown="false"
+                                MultiSelectMode="Token"
+                                NoResultsFoundFontAttributes="Bold"
+                                NoResultsFoundFontSize="16"
+                                NoResultsFoundText="No Results Found"
+                                NoResultsFoundTextColor="DarkGreen"
+                                SelectedItem="{Binding Planning.programs}"
+                                SuggestionMode="StartsWith"
+                                TextColor="Black"
+                                TokensWrapMode="Wrap"
+                                WidthRequest="210">
+                                <autocomplete:SfAutoComplete.TokenSettings>
+                                    <autocomplete:TokenSettings
+                                        BackgroundColor="#66ccff"
+                                        CornerRadius="15"
+                                        DeleteButtonColor="#993300"
+                                        DeleteButtonPlacement="Right"
+                                        FontFamily="Times New Roman"
+                                        FontSize="16"
+                                        IsCloseButtonVisible="true"
+                                        SelectedBackgroundColor="#ffffe0"
+                                        TextColor="White" />
+                                </autocomplete:SfAutoComplete.TokenSettings>
+                            </autocomplete:SfAutoComplete>
+                            <inputLayout:SfTextInputLayout.LeadingView>
+                                <Image Source="program.png" />
+                            </inputLayout:SfTextInputLayout.LeadingView>
+                        </inputLayout:SfTextInputLayout>
+                        <!-- <Label
+                            Grid.Row="5"
+                            FontSize="Small"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="False"
+                            Text="Program is Required"
+                            TextColor="OrangeRed">
+                            <Label.Triggers>
+                                <MultiTrigger TargetType="Label">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference ProgramEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="False" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="{Binding Value}" />
+                                </MultiTrigger>
+                            </Label.Triggers>
+                        </Label>-->
+                        <Button
+                            Grid.Row="6"
+                            BackgroundColor="#FF4081"
+                            Command="{Binding UpdatePlanning}"
+                            CornerRadius="25"
+                            HorizontalOptions="Center"
+                            Text="{i18n:Translate Update}"
+                            TextColor="#FFFFFF"
+                            WidthRequest="280">
+                            <Button.Triggers>
+                                <MultiTrigger TargetType="Button">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference DateEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        <BindingCondition Binding="{Binding Source={x:Reference AthleticEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        <!-- <BindingCondition Binding="{Binding Source={x:Reference ProgramEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />-->
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="{Binding IsEnabled, Mode=TwoWay}" />
+                                </MultiTrigger>
+                            </Button.Triggers>
+                        </Button>
+                        <Button
+                            Grid.Row="7"
+                            BackgroundColor="#7A93AC"
+                            Command="{Binding ClosePopup}"
+                            CornerRadius="25"
+                            HorizontalOptions="Center"
+                            Text="{i18n:Translate Close}"
+                            TextColor="#FFFFFF"
+                            WidthRequest="280" />
+                        <!--  ACTIVITYINDICATOR: IS RUNNING WHEN CLICK ON LOGIN BUTTON
+                        <ActivityIndicator
+                            x:Name="ShowLoginIndicator"
+                            Grid.Row="8"
+                            HorizontalOptions="Center"
+                            IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                            IsVisible="False"
+                            VerticalOptions="Center"
+                            Color="#306BAC">
+                            <ActivityIndicator.Triggers>
+                                <MultiTrigger TargetType="ActivityIndicator">
+                                    <MultiTrigger.Conditions>
+                                        <BindingCondition Binding="{Binding Source={x:Reference DateEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        <BindingCondition Binding="{Binding Source={x:Reference AthleticEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                        <BindingCondition Binding="{Binding Source={x:Reference ProgramEntry}, Path=Text, Converter={StaticResource NotNullOrEmptyStringConverter}}" Value="True" />
+                                    </MultiTrigger.Conditions>
+                                    <Setter Property="IsVisible" Value="True" />
+                                </MultiTrigger>
+                            </ActivityIndicator.Triggers>
+                        </ActivityIndicator>-->
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </StackLayout>
+</pages:PopupPage>

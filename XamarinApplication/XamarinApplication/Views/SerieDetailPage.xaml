@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="XamarinApplication.Views.SerieDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    Title="{i18n:Translate Series}"
+    mc:Ignorable="d">
+    <StackLayout
+        Margin="5,8,5,5"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <ScrollView Orientation="Vertical">
+            <Frame
+                Margin="2"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#FDFFFC"
+                HasShadow="true">
+                <StackLayout>
+                    <StackLayout
+                        Margin="-15"
+                        HorizontalOptions="End"
+                        VerticalOptions="End">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Close_Serie_Details" />
+                        </StackLayout.GestureRecognizers>
+                        <Image
+                            HeightRequest="40"
+                            Source="close.png"
+                            WidthRequest="40" />
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Margin="5,5,5,10"
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="{i18n:Translate Serie}"
+                            TextColor="Black" />
+                        <BoxView HeightRequest="1" Color="LightGray" />
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="{i18n:Translate Serie}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding Serie.serie}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="{i18n:Translate Initials}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding Serie.initials}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="{i18n:Translate EffortIncrease}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding Serie.effortIncrease}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="{i18n:Translate SecondsIncrease}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Text="{Binding Serie.secondsIncreaseEffort}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="{i18n:Translate Limits}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                Text="{Binding Serie.limits}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="{i18n:Translate TimeStaticity}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                Text="{Binding Serie.timeStaticity}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="6"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="{i18n:Translate Exercice}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="6"
+                                Grid.Column="1"
+                                Text="{Binding Serie.exercise.name}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="7"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="Exercice Typology"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="7"
+                                Grid.Column="1"
+                                Text="{Binding Serie.exercise.exerciseTypologie.detail}"
+                                TextColor="Black" />
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </StackLayout>
+    <!--  <ContentPage
+        x:Name="InformationsTitle"
+        HeightRequest="50"
+        Icon="information.png"
+        WidthRequest="50">
+        <ScrollView>
+            <StackLayout>
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Serie}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{Binding Serie.serie}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Initials}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding Serie.initials}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate EffortIncrease}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{Binding Serie.effortIncrease}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate SecondsIncrease}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{Binding Serie.secondsIncreaseEffort}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Limits}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Text="{Binding Serie.limits}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate TimeStaticity}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Text="{Binding Serie.timeStaticity}"
+                        TextColor="Black" />
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage
+        x:Name="ExerciceTitle"
+        HeightRequest="50"
+        Icon="exercice.png"
+        WidthRequest="50">
+        <ScrollView>
+            <StackLayout>
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Name}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{Binding Serie.exercise.name}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate TotalSeries}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding Serie.exercise.totalSeries}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate TotalReputation}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{Binding Serie.exercise.totalReputation}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Lood"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{Binding Serie.exercise.lood}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate TypeLoad}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Text="{Binding Serie.exercise.typeLoad}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate BreakDuration}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Text="{Binding Serie.exercise.breakDuration}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Speed}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Text="{Binding Serie.exercise.speed}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Level}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Text="{Binding Serie.exercise.level}"
+                        TextColor="Black" />
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>-->
+</pages:PopupPage>

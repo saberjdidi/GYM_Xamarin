@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="XamarinApplication.Views.ParameterClientDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    mc:Ignorable="d">
+    <StackLayout
+        Margin="5,8,5,5"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <ScrollView Orientation="Vertical">
+            <Frame
+                Margin="2"
+                BackgroundColor="#FDFFFC"
+                BorderColor="#FDFFFC"
+                HasShadow="true">
+                <StackLayout>
+                    <StackLayout
+                        Margin="-15"
+                        HorizontalOptions="End"
+                        VerticalOptions="End">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Close_Parameter_Details" />
+                        </StackLayout.GestureRecognizers>
+                        <Image
+                            HeightRequest="40"
+                            Source="close.png"
+                            WidthRequest="40" />
+                    </StackLayout>
+                    <StackLayout>
+                        <Label
+                            Margin="5,5,5,10"
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalOptions="Center"
+                            Text="Parameter Details"
+                            TextColor="Black" />
+                        <BoxView HeightRequest="1" Color="LightGray" />
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="{i18n:Translate Date}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding Parameter.date}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="Chest"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding Parameter.chest}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="Right Arm"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding Parameter.rightArm}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="Left Arm"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Text="{Binding Parameter.leftArm}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="Life"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                Text="{Binding Parameter.life}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="Sides"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                Text="{Binding Parameter.sides}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="6"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="Thigh Right"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="6"
+                                Grid.Column="1"
+                                Text="{Binding Parameter.thighRight}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="7"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="Thigh Left"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="7"
+                                Grid.Column="1"
+                                Text="{Binding Parameter.thighLeft}"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="8"
+                                Grid.Column="0"
+                                FontAttributes="Bold"
+                                Text="Weight"
+                                TextColor="Black" />
+                            <Label
+                                Grid.Row="8"
+                                Grid.Column="1"
+                                Text="{Binding Parameter.weight}"
+                                TextColor="Black" />
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </StackLayout>
+</pages:PopupPage>

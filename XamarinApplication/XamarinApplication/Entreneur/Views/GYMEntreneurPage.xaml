@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+             xmlns:custom="clr-namespace:XamarinApplication"
+             Title="        GYM"
+             x:Class="XamarinApplication.Entreneur.Views.GYMEntreneurPage">
+    <StackLayout Padding="5">
+        <custom:RoundedCornerView
+                            Margin="3" 
+                            BorderColor="#C33C54"
+                            BorderWidth="1"
+                            RoundedCornerRadius="45">
+            <StackLayout BackgroundColor="#C33C54" Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <StackLayout Margin="25,0,0,0">
+                <Label  FontAttributes="Bold" FontFamily="Arial, Helvetica, sans-serif"
+         FontSize="18" Text="{Binding User.gim.Code}" TextColor="#FFFFFF" />
+                <Label FontAttributes="Italic" FontSize="16"
+         Text="{Binding User.gim.Name}" TextColor="#CFFBFC" />
+                <Label FontFamily="Times New Roman" FontSize="14"
+         Text="{Binding User.gim.Description}" TextColor="#BCF4F5" />
+            </StackLayout>
+            </StackLayout>
+        </custom:RoundedCornerView>
+        <!-- <ListView
+            HasUnevenRows="true"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+            ItemsSource="{Binding User}"
+            RefreshCommand="{Binding RefreshCommand}"
+            SeparatorVisibility="Default">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <custom:RoundedCornerView
+                            Margin="3"
+                            BorderColor="#C33C54"
+                            BorderWidth="1"
+                            RoundedCornerRadius="45">
+                            <Grid BackgroundColor="#C33C54">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    Padding="20,0,0,0"
+                                    Orientation="Vertical"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="Arial, Helvetica, sans-serif"
+                                        FontSize="18"
+                                        Text="{Binding gim.Code}"
+                                        TextColor="#FFFFFF" />
+                                    <Label
+                                        FontAttributes="Italic"
+                                        FontSize="16"
+                                        Text="{Binding gim.Name}"
+                                        TextColor="#CFFBFC" />
+                                    <Label
+                                        FontFamily="Times New Roman"
+                                        FontSize="14"
+                                        Text="{Binding gim.Description}"
+                                        TextColor="#BCF4F5" />
+                                </StackLayout>
+                            </Grid>
+                        </custom:RoundedCornerView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+    </StackLayout>
+</ContentPage>

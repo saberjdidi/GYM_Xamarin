@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="XamarinApplication.Views.PurchasedPackageDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{i18n:Translate PurchasedPackage}"
+    mc:Ignorable="d">
+    <ContentPage
+        Title="{i18n:Translate Informations}"
+        HeightRequest="50"
+        Icon="information.png"
+        WidthRequest="50">
+        <ScrollView>
+            <StackLayout>
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Hour}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.hour}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate PurchasedDate}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.purchasedDate}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate TotalConsumed}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.totalConsumed}"
+                        TextColor="Black" />
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+    <ContentPage Title="{i18n:Translate Machine}" Icon="machine.png">
+        <ScrollView>
+            <StackLayout>
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Code}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.machine.code}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate SerialNumber}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.machine.serialNumber}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="Ip"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.machine.ip}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Description}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.machine.description}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate Note}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.machine.note}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate TotalPurchased}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.machine.totalPurchased}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="{i18n:Translate TotalConsumed}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.machine.totalConsumed}"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        FontAttributes="Bold"
+                        Text="GYM"
+                        TextColor="Black" />
+                    <Label
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Text="{Binding PurchasedPackage.machine.gim.Name}"
+                        TextColor="Black" />
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

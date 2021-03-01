@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XamarinApplication.Views.ExercicePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:XamarinApplication;assembly=XamarinApplication"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+    xmlns:i18n="clr-namespace:XamarinApplication.Helpers"
+    xmlns:local="clr-namespace:XamarinApplication.Converters"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:XamarinApplication.ViewModels;assembly=XamarinApplication"
+    Title="{i18n:Translate Exercices}"
+    mc:Ignorable="d">
+    <!--BindingContext="{Binding Main, Source={StaticResource Locator}}"
+    <StackLayout Padding="5" BindingContext="{Binding Exercices}">...</StackLayout>
+    <ContentPage.BindingContext>
+        <viewModels:ExerciceViewModel />
+    </ContentPage.BindingContext>-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:VisibilityConverter x:Key="visibilityConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <!-- <ToolbarItem
+            Command="{Binding OpenSearchBar}"
+            IconImageSource="ic_search_white_24dp"
+            Text="{Binding ShowHide}" />-->
+        <ToolbarItem Command="{Binding SearchPopup}" IconImageSource="ic_search_white_24dp" />
+        <ToolbarItem Clicked="Add_Exercice" IconImageSource="add" />
+    </ContentPage.ToolbarItems>
+    <StackLayout Padding="5">
+        <custom:RoundedCornerView BorderWidth="1" RoundedCornerRadius="25">
+            <!-- <SearchBar
+                BackgroundColor="PapayaWhip"
+                HeightRequest="46"
+                IsVisible="{Binding ShowHide}"
+                Placeholder="{i18n:Translate Name}"
+                SearchCommand="{Binding SearchCommand}"
+                Text="{Binding Filter, Mode=TwoWay}" />-->
+        </custom:RoundedCornerView>
+        <Label
+            x:Name="status"
+            FontSize="24"
+            HorizontalOptions="FillAndExpand"
+            HorizontalTextAlignment="Center"
+            IsVisible="{Binding IsVisibleStatus}"
+            Text="No Result !"
+            TextColor="Black"
+            VerticalOptions="FillAndExpand"
+            VerticalTextAlignment="Center" />
+        <ListView
+            HasUnevenRows="true"
+            IsPullToRefreshEnabled="true"
+            IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+            IsVisible="{Binding Path=IsVisible, Converter={StaticResource visibilityConverter}}"
+            ItemAppearing="ListView_ItemAppearing"
+            ItemsSource="{Binding Exercices}"
+            RefreshCommand="{Binding RefreshCommand}"
+            SeparatorVisibility="Default">
+            <ListView.Behaviors>
+                <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem
+                                Clicked="Update_Exercice"
+                                CommandParameter="{Binding .}"
+                                IconImageSource="edit.png"
+                                Text="Edit" />
+                            <MenuItem
+                                Command="{Binding DeleteCommand}"
+                                IconImageSource="trash.png"
+                                IsDestructive="true"
+                                Text="Delete" />
+                            <MenuItem
+                                Clicked="Exercice_Detail"
+                                CommandParameter="{Binding .}"
+                                IconImageSource="show.png"
+                                Text="Show" />
+                            <MenuItem
+                                Clicked="Series_Exercice"
+                                CommandParameter="{Binding .}"
+                                Text="Series" />
+                            <MenuItem
+                                Clicked="Images_Exercice"
+                                CommandParameter="{Binding .}"
+                                Text="Images" />
+                        </ViewCell.ContextActions>
+                        <custom:RoundedCornerView
+                            Margin="3"
+                            BorderColor="#C33C54"
+                            BorderWidth="1"
+                            RoundedCornerRadius="45">
+                            <Grid BackgroundColor="#C33C54">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout
+                                    Grid.Column="1"
+                                    Margin="5"
+                                    Padding="20,0,0,0"
+                                    Orientation="Vertical"
+                                    VerticalOptions="Center">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="Arial, Helvetica, sans-serif"
+                                        FontSize="18"
+                                        Text="{Binding name}"
+                                        TextColor="#FFFFFF" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontFamily="Arial, Helvetica, sans-serif"
+                                        FontSize="18"
+                                        Text="{Binding exerciseTypologie.detail}"
+                                        TextColor="#FFFFFF" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Italic"
+                                            FontSize="16"
+                                            Text="{i18n:Translate TotalSeries}"
+                                            TextColor="#CFFBFC"
+                                            WidthRequest="150" />
+                                        <Label
+                                            FontAttributes="Italic"
+                                            FontSize="16"
+                                            Text="{Binding totalSeries}"
+                                            TextColor="#CFFBFC" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontFamily="Times New Roman"
+                                            FontSize="14"
+                                            Text="{i18n:Translate TotalReputation}"
+                                            TextColor="#BCF4F5"
+                                            WidthRequest="150" />
+                                        <Label
+                                            FontFamily="Times New Roman"
+                                            FontSize="14"
+                                            Text="{Binding totalReputation}"
+                                            TextColor="#BCF4F5" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </custom:RoundedCornerView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <Grid Padding="6" IsVisible="{Binding IsBusy}">
+                    <Grid.Triggers>
+                        <Trigger TargetType="Grid" Property="IsVisible" Value="False">
+                            <Setter Property="HeightRequest" Value="0" />
+                        </Trigger>
+                    </Grid.Triggers>
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Text="Loading..."
+                        TextColor="#246EB9"
+                        VerticalOptions="Center" />
+                </Grid>
+            </ListView.Footer>
+        </ListView>
+
+        <!--
+        <ListView
+            BackgroundColor="AliceBlue"
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsRefreshing}"
+            ItemTapped="Exercice_ItemTapped"
+            ItemsSource="{Binding Exercices}"
+            RefreshCommand="{Binding RefreshCommand}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="0,10">
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Title"
+                                    Text="Name:"
+                                    TextColor="#FFFFFF"
+                                    WidthRequest="110" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Title"
+                                    Text="{Binding name}"
+                                    TextColor="#FFFFFF" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Subtitle"
+                                    Text="Total Series:"
+                                    TextColor="#FFFFFF"
+                                    WidthRequest="150" />
+                                <Label
+                                    FontSize="Subtitle"
+                                    Text="{Binding totalSeries}"
+                                    TextColor="#FFFFFF" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Subtitle"
+                                    Text="Total Reputation:"
+                                    TextColor="#FFFFFF"
+                                    WidthRequest="150" />
+                                <Label
+                                    FontSize="Subtitle"
+                                    Text="{Binding totalReputation}"
+                                    TextColor="#FFFFFF" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>-->
+    </StackLayout>
+</ContentPage>

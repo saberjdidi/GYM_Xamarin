@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="XamarinApplication.Views.ConfigurationMachinePopupPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:XamarinApplication"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    mc:Ignorable="d">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+
+    <ScrollView
+        Padding="1,1,1,1"
+        BackgroundColor="#FCFCFC"
+        Orientation="Both">
+        <Grid HorizontalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="76" />
+                <ColumnDefinition Width="76" />
+                <ColumnDefinition Width="76" />
+                <ColumnDefinition Width="76" />
+            </Grid.ColumnDefinitions>
+            <StackLayout
+                Grid.Column="0"
+                Margin="1,30,1,5"
+                HorizontalOptions="Start"
+                Orientation="Vertical">
+                <Label
+                    Grid.Row="0"
+                    FontAttributes="Bold"
+                    Text="Inizio [mm]"
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="1"
+                    Keyboard="Telephone"
+                    Placeholder="150.0"
+                    Text=""
+                    TextColor="#FBB13C"
+                    WidthRequest="100" />
+                <Label
+                    Grid.Row="2"
+                    FontAttributes="Bold"
+                    Text="Fine [mm]"
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="3"
+                    Keyboard="Telephone"
+                    Placeholder="500.0"
+                    Text=""
+                    TextColor="#FBB13C"
+                    WidthRequest="100" />
+                <Button
+                    Margin="0,80,0,0"
+                    BackgroundColor="#73D2DE"
+                    Clicked="Previous_Page"
+                    HeightRequest="40"
+                    ImageSource="previous"
+                    WidthRequest="80" />
+            </StackLayout>
+            <StackLayout
+                Grid.Column="1"
+                Margin="1,30,5,5"
+                HorizontalOptions="Center"
+                Orientation="Vertical">
+                <Label
+                    Grid.Row="0"
+                    FontAttributes="Bold"
+                    Text="H [mm]"
+                    TextColor="Red" />
+                <local:RoundedEntry
+                    Grid.Row="1"
+                    Keyboard="Telephone"
+                    Placeholder="-1"
+                    Text=""
+                    TextColor="red"
+                    WidthRequest="100" />
+                <Label
+                    Grid.Row="2"
+                    FontAttributes="Bold"
+                    Text="H [mm]"
+                    TextColor="Red" />
+                <local:RoundedEntry
+                    Grid.Row="3"
+                    Keyboard="Telephone"
+                    Placeholder="-1"
+                    Text=""
+                    TextColor="red"
+                    WidthRequest="100" />
+            </StackLayout>
+            <StackLayout
+                Grid.Column="2"
+                Margin="5,55,2,3"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="140" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Row="0"
+                        BackgroundColor="#E3F981"
+                        BorderColor="#FBB13C"
+                        BorderWidth="1"
+                        FontAttributes="Bold"
+                        FontSize="22"
+                        HeightRequest="45"
+                        Text="STATICITA'"
+                        TextColor="Blue"
+                        WidthRequest="160" />
+                </Grid>
+                <Label
+                    Grid.Row="1"
+                    FontAttributes="Bold"
+                    Text="Inc.sforzo"
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="2"
+                    Keyboard="Numeric"
+                    Placeholder="6"
+                    Text=""
+                    TextColor="#FBB13C"
+                    WidthRequest="100" />
+                <Label
+                    Grid.Row="3"
+                    FontAttributes="Bold"
+                    Text="Limite[Kg]"
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="4"
+                    Keyboard="Numeric"
+                    Placeholder="35"
+                    Text=""
+                    TextColor="#FBB13C"
+                    WidthRequest="100" />
+
+                <Label
+                    Grid.Row="10"
+                    Margin="-40,10,0,0"
+                    FontAttributes="Bold"
+                    FontSize="24"
+                    Text="Ready"
+                    TextColor="#FBB13C" />
+            </StackLayout>
+            <StackLayout
+                Grid.Column="3"
+                Margin="1,107,2,1"
+                HorizontalOptions="EndAndExpand"
+                Orientation="Vertical">
+                <Label
+                    Grid.Row="1"
+                    FontAttributes="Bold"
+                    Text="T adeg.[s]"
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="2"
+                    Keyboard="Numeric"
+                    Placeholder="2"
+                    Text=""
+                    TextColor="#FBB13C"
+                    WidthRequest="100" />
+                <Label
+                    Grid.Row="3"
+                    FontAttributes="Bold"
+                    Text="TEMPO"
+                    TextColor="#FBB13C" />
+                <local:RoundedEntry
+                    Grid.Row="4"
+                    Keyboard="Numeric"
+                    Placeholder="15"
+                    Text=""
+                    TextColor="#FBB13C"
+                    WidthRequest="100" />
+            </StackLayout>
+
+        </Grid>
+    </ScrollView>
+</pages:PopupPage>
